@@ -1,7 +1,10 @@
 import {
+    GithubAuthProvider,
+    GoogleAuthProvider,
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInWithPopup,
     signOut,
     updateProfile,
 } from "firebase/auth";
@@ -15,6 +18,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   // Create User With E-mail & Password
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -31,6 +36,36 @@ const AuthProvider = ({ children }) => {
   // Login User With E-mail & Password
   const loginUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  //   Login With Google Pop-Up
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch(() => {});
+  };
+
+  //   Login With Google Pop-Up
+  const handleGithubLogin = () => {
+    signInWithPopup(auth, githubProvider)
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch(() => {});
   };
 
   //   Manage User [onAuthStateChanged]
@@ -70,6 +105,8 @@ const AuthProvider = ({ children }) => {
     handleUserUpdate,
     user,
     loading,
+    handleGoogleLogin,
+    handleGithubLogin,
   };
 
   return (

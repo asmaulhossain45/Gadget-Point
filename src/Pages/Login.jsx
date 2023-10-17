@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Routes/AuthProvider";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, handleGoogleLogin, handleGithubLogin } =
+    useContext(AuthContext);
   const [eyeToggle, setEyeToggle] = useState(true);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -109,10 +110,16 @@ const Login = () => {
         </p>
 
         <div className="flex flex-col mt-4 gap-2 px-10 font-bold">
-          <button className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300">
+          <button
+            onClick={handleGoogleLogin}
+            className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
+          >
             Login With Google
           </button>
-          <button className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300">
+          <button
+            onClick={handleGithubLogin}
+            className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
+          >
             Login With GitHub
           </button>
         </div>

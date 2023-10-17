@@ -7,10 +7,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Routes/AuthProvider";
 
 const Register = () => {
-  const { createUser, handleUserUpdate } = useContext(AuthContext);
+  const { createUser, handleUserUpdate, handleGoogleLogin, handleGithubLogin } =
+    useContext(AuthContext);
   const [eyeToggle, setEyeToggle] = useState(true);
   const [error, setError] = useState(null);
-
+  // Create User with Email and Password
   const handleSubmitButton = (event) => {
     setError(null);
     event.preventDefault();
@@ -139,10 +140,16 @@ const Register = () => {
           </Link>
         </p>
         <div className="flex flex-col mt-4 gap-2 px-10 font-bold">
-          <button className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300">
+          <button
+            onClick={handleGoogleLogin}
+            className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
+          >
             Login With Google
           </button>
-          <button className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300">
+          <button
+            onClick={handleGithubLogin}
+            className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
+          >
             Login With GitHub
           </button>
         </div>
