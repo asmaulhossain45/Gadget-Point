@@ -3,6 +3,8 @@ import * as ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import BrandProducts from "./Components/BrandProducts";
+import ProductDetails from "./Components/ProductDetails";
 import ProductUpdate from "./Components/ProductUpdate";
 import "./index.css";
 import AddProduct from "./Pages/AddProduct";
@@ -25,6 +27,12 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/brandProduct/:brand",
+        element: <BrandProducts></BrandProducts>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/brand/${params.brand}`),
+      },
+      {
         path: "/products",
         element: <Products></Products>,
         loader: () => fetch("http://localhost:5000/api/products"),
@@ -32,7 +40,14 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <ProductUpdate></ProductUpdate>,
-        loader: ({params}) => fetch(`http://localhost:5000/api/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/products/${params.id}`),
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/products/${params.id}`),
       },
       {
         path: "/addProduct",
@@ -41,6 +56,7 @@ const router = createBrowserRouter([
       {
         path: "/myCart",
         element: <MyCart></MyCart>,
+        loader: () => fetch("http://localhost:5000/api/cart"),
       },
       {
         path: "/contact",
