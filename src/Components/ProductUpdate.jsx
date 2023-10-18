@@ -1,5 +1,21 @@
-const AddProduct = () => {
-  const handleAddProduct = (event) => {
+import { useLoaderData, useNavigate } from "react-router-dom";
+
+const ProductUpdate = () => {
+  const navigate = useNavigate();
+  const loadedProduct = useLoaderData();
+  const {
+    _id,
+    name,
+    released,
+    brand,
+    category,
+    photoURL,
+    price,
+    rating,
+    description,
+  } = loadedProduct;
+
+  const handleUpdateProduct = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -10,7 +26,7 @@ const AddProduct = () => {
     const price = form.price.value;
     const rating = form.rating.value;
     const description = form.description.value;
-    const addProductData = {
+    const updateProductData = {
       name,
       released,
       brand,
@@ -20,28 +36,30 @@ const AddProduct = () => {
       rating,
       description,
     };
-    console.log(addProductData);
-    // Post data to server
-    fetch("http://localhost:5000/api/products", {
-      method: "POST",
+    console.log(updateProductData);
+
+    // Update Product Using PATCH
+    fetch(`http://localhost:5000/api/products/${_id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(addProductData),
+      body: JSON.stringify(updateProductData),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          alert("Product Add Successfully");
+        navigate("/products");
+        if (data.modifiedCount > 0) {
+          alert("Product Update Successful!");
         }
       });
   };
 
   return (
     <div className="py-10 bg-white">
-      <h1 className="text-center text-3xl font-bold">Add Product Details</h1>
+      <h1 className="text-center text-3xl font-bold">Update Product Details</h1>
       <form
-        onSubmit={handleAddProduct}
+        onSubmit={handleUpdateProduct}
         className=" text-slate-900 px-4 md:px-10 pt-4"
       >
         <div className="flex flex-col md:flex-row justify-center gap-x-6 gap-y-2 md:gap-y-0">
@@ -53,7 +71,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 type="text"
                 name="name"
-                defaultValue="Galaxy A13"
+                defaultValue={name}
                 id="1"
               />
             </div>
@@ -63,7 +81,7 @@ const AddProduct = () => {
               <select
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 name="brand"
-                defaultValue="Select a Brand"
+                defaultValue={brand}
                 id="3"
               >
                 <option disabled>Select a Brand</option>
@@ -81,7 +99,7 @@ const AddProduct = () => {
               <select
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 name="category"
-                defaultValue="Select a Category"
+                defaultValue={category}
                 id="4"
               >
                 <option disabled>Select a Category</option>
@@ -100,7 +118,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 type="text"
                 name="released"
-                defaultValue="16-08-2023"
+                defaultValue={released}
                 id="2"
               />
             </div>
@@ -113,7 +131,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 type="text"
                 name="photoURL"
-                defaultValue="https://i.ibb.co/Gt2mHJj/mobile2.jpg"
+                defaultValue={photoURL}
                 id="5"
               />
             </div>
@@ -124,7 +142,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 pl-3 py-1 rounded-md w-full"
                 type="number"
                 name="price"
-                defaultValue="5000"
+                defaultValue={price}
                 id="6"
               />
             </div>
@@ -135,7 +153,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 pl-3 py-1 rounded-md w-full"
                 type="number"
                 name="rating"
-                defaultValue="4.5"
+                defaultValue={rating}
                 id="7"
               />
             </div>
@@ -145,7 +163,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 px-3 py-1 rounded-md w-full"
                 type="text"
                 name="description"
-                defaultValue="Short Description"
+                defaultValue={description}
                 id="8"
               />
             </div>
@@ -154,11 +172,11 @@ const AddProduct = () => {
         <input
           className="w-full text-lg font-semibold text-white bg-sky-500 py-1 mt-3 rounded-md hover:scale-95 duration-300"
           type="submit"
-          value="Add Product"
+          value="Update Product"
         />
       </form>
     </div>
   );
 };
 
-export default AddProduct;
+export default ProductUpdate;
