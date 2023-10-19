@@ -14,7 +14,7 @@ function App() {
     );
   }
   return (
-    <section className="max-w-screen-2xl mx-auto bg-slate-900">
+    <section className="max-w-screen-xl mx-auto bg-slate-900">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

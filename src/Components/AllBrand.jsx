@@ -11,13 +11,13 @@ const AllBrand = () => {
 
   return (
     <>
-      <h1 className="text-3xl text-white font-bold text-center mb-5">
+      <h1 className="text-xl md:text-3xl text-white font-bold text-center mb-5">
         SHOP BY BRAND
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-3 rounded-md overflow-hidden justify-items-center">
         {brands.map((brand) => (
           <Link
-            key={brand.id}
+            key={brand._id}
             to={`/brandProduct/${brand.name}`}
             className="bg-white rounded-md overflow-hidden"
           >

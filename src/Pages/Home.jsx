@@ -1,13 +1,17 @@
 import AllBrand from "../Components/AllBrand";
-import Carousel from "../Components/Carousel";
+import HeaderCarousel from "../Components/HeaderCarousel/HeaderCarousel";
 
 const Home = () => {
   return (
     <>
       <header>
-        <Carousel></Carousel>
+        <HeaderCarousel></HeaderCarousel>
       </header>
-      <AllBrand></AllBrand>
+      <section
+        className="my-6 md:my-10 lg:my-14 px-4 md:px-8"
+      >
+        <AllBrand></AllBrand>
+      </section>
       <div>
         <img
           className="w-full"
@@ -15,7 +19,6 @@ const Home = () => {
           alt=""
         />
       </div>
-      <section className="px-4 py-10 md:px-8"></section>
     </>
   );
 };
