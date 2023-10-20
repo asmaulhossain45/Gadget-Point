@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { GrUpdate } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
@@ -6,6 +7,7 @@ const Products = () => {
   const products = useLoaderData();
   return (
     <div className="my-10">
+      <Helmet><title>Products</title></Helmet>
       <h1 className="text-xl md:text-3xl text-orange-500 text-center font-bold">
         Featured Product
       </h1>

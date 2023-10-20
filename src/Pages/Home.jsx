@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import AllBrand from "../Components/AllBrand";
 import CustomerRating from "../Components/CustomerRating";
 import HeaderCarousel from "../Components/HeaderCarousel/HeaderCarousel";
@@ -6,6 +7,7 @@ import HotProducts from "../Components/HotProducts";
 const Home = () => {
   return (
     <>
+    <Helmet><title>Home</title></Helmet>
       <header>
         <HeaderCarousel></HeaderCarousel>
       </header>

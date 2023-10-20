@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -62,6 +63,7 @@ const AddProduct = () => {
 
   return (
     <div className="bg-slate-900 min-h-[80vh] flex justify-center items-center my-6">
+      <Helmet><title>Add Product</title></Helmet>
       <div className="w-11/12 md:w-3/4 mx-auto pb-6 bg-white border-sky-400 border-4 rounded-lg">
         <h1 className="text-center text-white text-xl md:text-3xl font-bold bg-sky-400 py-2">
           Add Product Details

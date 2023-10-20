@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +7,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Routes/AuthProvider";
 
 const Login = () => {
-  const { loginUser, handleGoogleLogin, handleGithubLogin } =
+  const { loginUser, userGoogleLogin, userGithubLogin } =
     useContext(AuthContext);
   const [eyeToggle, setEyeToggle] = useState(true);
   const navigate = useNavigate();
@@ -36,8 +37,44 @@ const Login = () => {
       });
   };
 
+  //   Login User With Google
+  const HandleGoogleLogin = () => {
+    userGoogleLogin()
+      .then(() => {
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Successful.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+  //   Login User With Github
+  const HandleGithubLogin = () => {
+    userGithubLogin()
+      .then(() => {
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Successful.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
   return (
     <div className="px-4 mx-auto py-20 md:py-32 min-h-[95vh]">
+      <Helmet><title>Login</title></Helmet>
       <div className="bg-white rounded-ee-3xl rounded-ss-3xl overflow-hidden pb-10 md:w-2/4 mx-auto">
         <h1 className="text-3xl text-center text-white font-bold py-2 bg-sky-400">
           Welcome
@@ -112,13 +149,13 @@ const Login = () => {
 
         <div className="flex flex-col mt-4 gap-2 px-10 font-bold">
           <button
-            onClick={handleGoogleLogin}
+            onClick={HandleGoogleLogin}
             className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
           >
             Login With Google
           </button>
           <button
-            onClick={handleGithubLogin}
+            onClick={HandleGithubLogin}
             className="border-2 border-sky-400 py-1 rounded-full hover:scale-95 duration-300"
           >
             Login With GitHub

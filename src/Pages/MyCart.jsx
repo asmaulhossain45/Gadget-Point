@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -29,6 +30,7 @@ const MyCart = () => {
 
   return (
     <div className="min-h-[85vh] px-4 md:px-8 my-6 md:my-10 lg:my-14">
+      <Helmet><title>My Cart</title></Helmet>
       <h1 className="text-xl md:text-3xl text-white text-center font-bold">
         Your Cart Product
       </h1>
