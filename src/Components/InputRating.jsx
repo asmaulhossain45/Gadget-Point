@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../Routes/AuthProvider";
 
 const InputRating = () => {
@@ -21,9 +22,15 @@ const InputRating = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
-          alert("Product Add Successfully");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Message Sent!",
+            text: "We will contact you soon!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

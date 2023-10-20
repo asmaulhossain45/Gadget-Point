@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const loadedProduct = useLoaderData();
@@ -13,7 +14,13 @@ const MyCart = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert("Product Deleted");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Remove Successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
         const remaining = products.filter((product) => product._id !== id);
         setProducts(remaining);

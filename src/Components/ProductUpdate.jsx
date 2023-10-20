@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductUpdate = () => {
   const navigate = useNavigate();
@@ -60,9 +61,15 @@ const ProductUpdate = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        navigate("/products");
+        navigate("/");
         if (data.modifiedCount > 0) {
-          alert("Product Update Successful!");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Update Successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -114,10 +121,10 @@ const ProductUpdate = () => {
               >
                 <option disabled>Select a Brand</option>
                 <option>Apple</option>
-                <option>Canon</option>
+                <option>Asus</option>
                 <option>Dell</option>
-                <option>Intel</option>
-                <option>OLG</option>
+                <option>Sony</option>
+                <option>LG</option>
                 <option>Samsung</option>
               </select>
             </div>
@@ -132,6 +139,7 @@ const ProductUpdate = () => {
               >
                 <option disabled>Select a Category</option>
                 <option>Television</option>
+                <option>Monitor</option>
                 <option>Laptop</option>
                 <option>Tablet</option>
                 <option>Smartphone</option>

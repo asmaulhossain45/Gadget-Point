@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const AddProduct = () => {
+  const navigate = useNavigate();
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -40,9 +44,17 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Product Add Successfully");
+          navigate("/")
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Product has been Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
+      form.reset();
   };
 
   return (
@@ -91,10 +103,10 @@ const AddProduct = () => {
               >
                 <option disabled>Select a Brand</option>
                 <option>Apple</option>
-                <option>Canon</option>
+                <option>Asus</option>
                 <option>Dell</option>
-                <option>Intel</option>
-                <option>OLG</option>
+                <option>Sony</option>
+                <option>LG</option>
                 <option>Samsung</option>
               </select>
             </div>
@@ -108,6 +120,7 @@ const AddProduct = () => {
               >
                 <option disabled>Select a Category</option>
                 <option>Television</option>
+                <option>Monitor</option>
                 <option>Laptop</option>
                 <option>Tablet</option>
                 <option>Smartphone</option>
@@ -174,6 +187,7 @@ const AddProduct = () => {
                 className="bg-transparent border-2 border-slate-300 outline-0 pl-3 py-1 rounded-md w-full"
                 type="number"
                 name="price"
+                step={0.1}
                 placeholder="$1199"
                 id="9"
               />

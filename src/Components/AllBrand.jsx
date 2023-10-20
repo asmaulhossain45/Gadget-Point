@@ -22,12 +22,13 @@ const AllBrand = () => {
           <Link
             key={brand._id}
             to={`/brandProduct/${brand.name}`}
-            className="bg-white rounded-md overflow-hidden"
+            className="bg-white rounded-md overflow-hidden hover:scale-90 duration-300"
           >
-            <img className="px-5" src={brand.photoURL} alt={brand.name} />
-            <h1 className="text-center font-medium bg-sky-400 w-full py-1">
-              {brand.name}
-            </h1>
+            <img
+              className="px-5 h-full"
+              src={brand.photoURL}
+              alt={brand.name}
+            />
           </Link>
         ))}
       </div>

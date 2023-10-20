@@ -28,7 +28,7 @@ const SwiperCarousel = ({ loadedProducts }) => {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        {loadedProducts.map((products) => (
+        {loadedProducts.slice(0, 3).map((products) => (
           <div key={products._id}>
             <SwiperSlide className="h-[20vh] md:h-[30vh]">
               <div className="card items-center w-full card-side px-2 md:px-14">

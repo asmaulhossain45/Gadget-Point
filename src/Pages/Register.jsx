@@ -2,13 +2,14 @@ import { useContext, useState } from "react";
 import { BiSolidUser } from "react-icons/bi";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { HiLink, HiMail } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Routes/AuthProvider";
 
 const Register = () => {
   const { createUser, handleUserUpdate, handleGoogleLogin, handleGithubLogin } =
     useContext(AuthContext);
+  const navigate = useNavigate();
   const [eyeToggle, setEyeToggle] = useState(true);
   const [error, setError] = useState(null);
   // Create User with Email and Password
@@ -37,6 +38,7 @@ const Register = () => {
         handleUserUpdate(name, photoURL)
           .then(() => {})
           .catch(() => {});
+        navigate("/");
         Swal.fire({
           position: "center",
           icon: "success",

@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import InputRating from "./InputRating";
 
 const ProductDetails = () => {
@@ -16,10 +17,22 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if(data.insertedId){
-          alert("Product added to Cart");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully added to Cart!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
         else{
-          alert("Product Already Added")
+          Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Already Added to Cart",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
