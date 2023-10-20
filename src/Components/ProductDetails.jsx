@@ -1,17 +1,9 @@
 import { useLoaderData } from "react-router-dom";
+import InputRating from "./InputRating";
 
 const ProductDetails = () => {
   const loadedProduct = useLoaderData();
-  const {
-    name,
-    released,
-    brand,
-    category,
-    photoURL,
-    price,
-    rating,
-    description,
-  } = loadedProduct;
+  const { name, brand, category, photoURL, price, description } = loadedProduct;
 
   const handleCartButton = () => {
     fetch("http://localhost:5000/api/cart", {
@@ -23,27 +15,51 @@ const ProductDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        alert("Product added to Cart")
+        if(data.insertedId){
+          alert("Product added to Cart");
+        }
+        else{
+          alert("Product Already Added")
+        }
       });
   };
 
   return (
-    <div className="bg-white m-10 p-10">
-      <img src={photoURL} alt={name} />
-      <h1>{name}</h1>
-      <h2>{brand}</h2>
-      <h3>{category}</h3>
-      <p>{price}</p>
-      <p>{rating}</p>
-      <p>{description}</p>
-      <p>{released}</p>
-      <button
-        onClick={handleCartButton}
-        className="bg-sky-400 px-4 py-1 rounded-md"
-      >
-        Add to Cart
-      </button>
+    <div className="my-6 md:my-10 lg:my-14 mx-4 md:mx-8">
+      <div className="bg-white">
+        <div className="grid grid-cols-2 gap-2 justify-items-center p-3">
+          <div className="place-self-center">
+            <img src={photoURL} alt={name} />
+          </div>
+          <div className="place-self-center md:space-y-2 lg:space-y-3">
+            <h1 className="underline md:text-2xl lg:text-4xl text-orange-500 font-semibold mb-2">
+              Product Features
+            </h1>
+            <h1 className="font-bold md:text-2xl lg:text-4xl">{name}</h1>
+            <h3 className="text-slate-600 md:text-xl lg:text-2xl">
+              {category}
+            </h3>
+            <h2 className="text-sm text-slate-600 md:text-xl lg:text-2xl">
+              Brand: {brand}
+            </h2>
+            <p className="text-slate-600 md:text-xl lg:text-2xl">
+              Price:{" "}
+              <span className="text-orange-500 font-semibold">${price}</span>
+            </p>
+            <button
+              onClick={handleCartButton}
+              className="bg-sky-400 lg:text-xl text-white px-4 py-1 font-semibold rounded-sm"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        <div className="p-5">
+          <h1 className="text-lg font-semibold">Description:</h1>
+          <p className="text-justify text-slate-600">{description}</p>
+        </div>
+      </div>
+      <InputRating></InputRating>
     </div>
   );
 };

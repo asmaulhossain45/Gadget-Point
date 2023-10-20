@@ -5,6 +5,7 @@ import SwiperCarousel from "./Carousel/SwiperCarousel";
 
 const BrandProducts = () => {
   const loadedProducts = useLoaderData();
+
   return (
     <div className="">
       <SwiperCarousel loadedProducts={loadedProducts}></SwiperCarousel>
@@ -16,7 +17,7 @@ const BrandProducts = () => {
           Get Your Desired Product from Featured Product!
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center my-6 px-4 md:px-8">
-          {loadedProducts.map((product) => (
+          {loadedProducts.slice(0, 3).map((product) => (
             <div
               key={product._id}
               className="flex flex-col text-slate-900 bg-white text-xl min-w-full mx-auto"

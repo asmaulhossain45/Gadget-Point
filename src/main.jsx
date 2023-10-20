@@ -16,6 +16,7 @@ import MyCart from "./Pages/MyCart";
 import Products from "./Pages/Products";
 import Register from "./Pages/Register";
 import AuthProvider from "./Routes/AuthProvider";
+import PrivateRoute from "./Routes/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,34 +29,58 @@ const router = createBrowserRouter([
       },
       {
         path: "/brandProduct/:brand",
-        element: <BrandProducts></BrandProducts>,
+        element: (
+          <PrivateRoute>
+            <BrandProducts></BrandProducts>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/brand/${params.brand}`),
       },
       {
         path: "/products",
-        element: <Products></Products>,
+        element: (
+          <PrivateRoute>
+            <Products></Products>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/api/products"),
       },
       {
         path: "/update/:id",
-        element: <ProductUpdate></ProductUpdate>,
+        element: (
+          <PrivateRoute>
+            <ProductUpdate></ProductUpdate>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/products/${params.id}`),
       },
       {
         path: "/products/:id",
-        element: <ProductDetails></ProductDetails>,
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/products/${params.id}`),
       },
       {
         path: "/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myCart",
-        element: <MyCart></MyCart>,
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
         loader: () => fetch("http://localhost:5000/api/cart"),
       },
       {

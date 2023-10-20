@@ -12,7 +12,6 @@ const MyCart = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           alert("Product Deleted");
         }
@@ -22,61 +21,39 @@ const MyCart = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-[85vh] px-4 md:px-8 my-6 md:my-10 lg:my-14">
+      <h1 className="text-xl md:text-3xl text-white text-center font-bold">
+        Your Cart Product
+      </h1>
+      <p className="text-xs md:text-base text-center text-white">
+        Get Your Desired Product from Featured Product!
+      </p>
       <div>
-        <div className="overflow-x-auto bg-white">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Released Date</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {products.map((product) => (
-              <tbody key={product._id}>
-                {/* row 1 */}
-                <tr>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={product.photoURL}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">{product.name}</div>
-                        <div className="text-sm opacity-50">
-                          {product.brand}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {product.released}
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      {product.rating}
-                    </span>
-                  </td>
-                  <td>$ {product.price}</td>
-                  <th>
-                    <button
-                      onClick={() => handleDeleteButton(product._id)}
-                      className="btn btn-ghost btn-xs"
-                    >
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              </tbody>
-            ))}
-          </table>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
+          {products.map((product) => (
+            <div
+              key={product._id}
+              className="grid grid-cols-2 bg-white items-center rounded-md"
+            >
+              <figure className="h-full">
+                <img className="p-5" src={product.photoURL} alt="" />
+              </figure>
+              <div className="grow space-y-1">
+                <h2 className="font-semibold text-xl lg:text-3xl">
+                  {product.name}
+                </h2>
+                <p className="text-xl font-semibold text-slate-500">
+                  {product.brand}
+                </p>
+                <button
+                  onClick={() => handleDeleteButton(product._id)}
+                  className="text-white rounded-sm bg-sky-400 py-1 px-2 font-semibold"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

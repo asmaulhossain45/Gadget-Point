@@ -13,6 +13,7 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const handleLoginUser = (event) => {
+    setError(null);
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -36,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="px-4 mx-auto py-20 md:py-32">
+    <div className="px-4 mx-auto py-20 md:py-32 min-h-[95vh]">
       <div className="bg-white rounded-ee-3xl rounded-ss-3xl overflow-hidden pb-10 md:w-2/4 mx-auto">
         <h1 className="text-3xl text-center text-white font-bold py-2 bg-sky-400">
           Welcome

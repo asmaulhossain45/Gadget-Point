@@ -5,10 +5,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "./Swiper.css";
 
 const SwiperCarousel = ({ loadedProducts }) => {
-  console.log(loadedProducts);
+
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {

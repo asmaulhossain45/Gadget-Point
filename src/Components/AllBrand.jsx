@@ -11,9 +11,12 @@ const AllBrand = () => {
 
   return (
     <>
-      <h1 className="text-xl md:text-3xl text-white font-bold text-center mb-5">
+      <h1 className="text-xl md:text-3xl text-orange-500 font-bold text-center">
         SHOP BY BRAND
       </h1>
+      <p className="text-xs md:text-base text-center text-white mb-5">
+        Find Your Desire Products By Brand and Be Happy!
+      </p>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-3 rounded-md overflow-hidden justify-items-center">
         {brands.map((brand) => (
           <Link

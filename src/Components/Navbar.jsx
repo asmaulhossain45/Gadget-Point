@@ -4,6 +4,7 @@ import { AuthContext } from "../Routes/AuthProvider";
 
 const Navbar = () => {
   const { user, handleLogOut } = useContext(AuthContext);
+
   const NavLinks = (
     <>
       <li>
@@ -27,7 +28,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-slate-900 text-sky-400 pr-4 md:px-8 shadow-sm shadow-sky-400 font-semibold">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown z-50">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
             <svg
               className="swap-off fill-current"
@@ -57,10 +58,16 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-50">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user.photoURL} />
+                <img
+                  src={
+                    user.photoURL
+                      ? user.photoURL
+                      : "https://i.ibb.co/XSZJkg3/Default-pfp-svg.png"
+                  }
+                />
               </div>
             </label>
             <ul

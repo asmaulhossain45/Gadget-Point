@@ -20,8 +20,18 @@ const Register = () => {
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
-    const user = { name, email, photoURL, password };
-    console.log(user);
+
+    if (password.length < 6) {
+      setError("Password should be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setError("Use at least one Upper-Case later");
+      return;
+    } else if (!/[!@#$%&*+.?~=]/.test(password)) {
+      setError("Use at least one special character");
+      return;
+    }
+
     createUser(email, password)
       .then(() => {
         handleUserUpdate(name, photoURL)
@@ -41,7 +51,7 @@ const Register = () => {
   };
 
   return (
-    <div className="px-4 mx-auto py-10 md:py-20">
+    <div className="px-4 mx-auto py-10 md:py-20  min-h-[95vh]">
       <div className="bg-white rounded-ee-3xl rounded-ss-3xl overflow-hidden pb-10 md:w-2/4 mx-auto">
         <h1 className="text-3xl text-center text-white font-bold py-2 bg-sky-400">
           Create Account
@@ -66,6 +76,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="John Doe"
+              required
               id="1"
             />
           </div>
@@ -82,6 +93,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="xyz@example.com"
+              required
               id="2"
             />
           </div>
@@ -121,6 +133,7 @@ const Register = () => {
               type={eyeToggle ? "password" : "text"}
               name="password"
               placeholder="********"
+              required
               id="4"
             />
           </div>
