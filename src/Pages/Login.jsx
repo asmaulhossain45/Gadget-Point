@@ -100,7 +100,6 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="xyz@example.com"
-              defaultValue="asmaulhossain@gmail.com"
               id="2"
             />
           </div>
@@ -126,7 +125,6 @@ const Login = () => {
               type={eyeToggle ? "password" : "text"}
               name="password"
               placeholder="********"
-              defaultValue="789456123"
               id="1"
             />
           </div>

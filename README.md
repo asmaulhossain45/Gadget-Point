@@ -1,8 +1,16 @@
-# React + Vite
+### GADGET POINT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Site Link:
 
-Currently, two official plugins are available:
+- [Gadget Point](https://gadget-point-asmaul.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Project Features:
+
+- find products by Brand
+- see the details of every product
+- save at cart his/her product
+- delete his/her cart product
+- send a message
+- rate our service
+- add product with details
+- update product details
