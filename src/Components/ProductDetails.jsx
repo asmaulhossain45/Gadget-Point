@@ -7,7 +7,7 @@ const ProductDetails = () => {
   const { name, brand, category, photoURL, price, description } = loadedProduct;
 
   const handleCartButton = () => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

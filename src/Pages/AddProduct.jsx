@@ -34,17 +34,20 @@ const AddProduct = () => {
     };
     console.log(addProductData);
     // Post data to server
-    fetch("http://localhost:5000/api/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addProductData),
-    })
+    fetch(
+      "https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(addProductData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          navigate("/")
+          navigate("/");
           Swal.fire({
             position: "center",
             icon: "success",
@@ -54,7 +57,7 @@ const AddProduct = () => {
           });
         }
       });
-      form.reset();
+    form.reset();
   };
 
   return (

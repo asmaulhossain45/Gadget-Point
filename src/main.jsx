@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/brand/${params.brand}`),
+          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/brand/${params.brand}`),
       },
       {
         path: "/products",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/api/products"),
+        loader: () => fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products"),
       },
       {
         path: "/update/:id",
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/products/${params.id}`),
+          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products/${params.id}`),
       },
       {
         path: "/products/:id",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/products/${params.id}`),
+          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products/${params.id}`),
       },
       {
         path: "/addProduct",
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/api/cart"),
+        loader: () => fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/cart"),
       },
       {
         path: "/contact",

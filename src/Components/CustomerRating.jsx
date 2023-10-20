@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const CustomerRating = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/reviews")
+    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

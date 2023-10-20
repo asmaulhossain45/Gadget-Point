@@ -13,7 +13,7 @@ const InputRating = () => {
     const message = form.message.value;
     const review = { name, photoURL, message };
     console.log(review);
-    fetch("http://localhost:5000/api/reviews", {
+    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const InputRating = () => {
       });
   };
   return (
-    <div className="w-11/12 md:w-3/4 mx-auto pb-6 bg-white border-sky-400 border-4 rounded-lg my-10">
+    <div className="w-11/12 md:w-2/4 mx-auto pb-6 bg-white border-sky-400 border-4 rounded-lg my-10">
       <h1 className="text-center text-white text-xl md:text-3xl font-bold bg-sky-400 py-2">
         Leave a Review
       </h1>
