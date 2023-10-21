@@ -1,3 +1,6 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { GrUpdate } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
@@ -5,9 +8,16 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Products = () => {
   const products = useLoaderData();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  });
+
   return (
     <div className="my-10">
-      <Helmet><title>Products</title></Helmet>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
       <h1 className="text-xl md:text-3xl text-orange-500 text-center font-bold">
         Featured Product
       </h1>
@@ -17,6 +27,7 @@ const Products = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center my-6 px-4 md:px-8">
         {products.map((product) => (
           <div
+            data-aos="zoom-in-up"
             key={product._id}
             className="flex flex-col text-slate-900 bg-white text-xl min-w-full mx-auto"
           >
@@ -48,10 +59,16 @@ const Products = () => {
                 </p>
               </div>
               <div className="flex flex-col justify-around items-center">
-                <Link className="text-2xl hover:scale-125 duration-300" to={`/Update/${product._id}`}>
+                <Link
+                  className="text-2xl hover:scale-125 duration-300"
+                  to={`/Update/${product._id}`}
+                >
                   <GrUpdate></GrUpdate>
                 </Link>
-                <Link className="text-2xl hover:scale-125 duration-300" to={`/products/${product._id}`}>
+                <Link
+                  className="text-2xl hover:scale-125 duration-300"
+                  to={`/products/${product._id}`}
+                >
                   <TbListDetails></TbListDetails>
                 </Link>
               </div>

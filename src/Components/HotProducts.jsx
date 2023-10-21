@@ -1,3 +1,5 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import { GrUpdate } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
@@ -6,12 +8,16 @@ import { Link } from "react-router-dom";
 const HotProducts = () => {
   const [hotProduct, setHotProduct] = useState([]);
   useEffect(() => {
-    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products")
+    fetch("https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products")
       .then((res) => res.json())
       .then((data) => {
         setHotProduct(data);
       });
   }, []);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  });
 
   return (
     <div className="my-10">
@@ -24,6 +30,7 @@ const HotProducts = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center my-6 px-4 md:px-8">
         {hotProduct.slice(0, 8).map((product) => (
           <div
+            data-aos="zoom-in-down"
             key={product._id}
             className="flex flex-col text-slate-900 bg-white text-xl min-w-full mx-auto"
           >

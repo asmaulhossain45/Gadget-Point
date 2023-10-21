@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import auth from "../Firebase/firebase.config";
 
 export const AuthContext = createContext(null);
@@ -38,8 +37,8 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-   //   Login User With Google
-   const userGoogleLogin = () => {
+  //   Login User With Google
+  const userGoogleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -62,20 +61,7 @@ const AuthProvider = ({ children }) => {
   //   User Log Out Section
   const handleLogOut = () => {
     setLoading(true);
-    signOut(auth)
-      .then(() => {
-        setUser(null);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Log Out Successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return signOut(auth);
   };
 
   const userInfo = {
@@ -84,6 +70,7 @@ const AuthProvider = ({ children }) => {
     handleLogOut,
     handleUserUpdate,
     user,
+    setUser,
     loading,
     userGoogleLogin,
     userGithubLogin,

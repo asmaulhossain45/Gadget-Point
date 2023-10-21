@@ -1,12 +1,18 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 
 const CustomerRating = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/reviews")
+    fetch("https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  });
 
   return (
     <div className="my-6 md:my-10 lg:my-14 px-4 md:px-8">
@@ -18,7 +24,8 @@ const CustomerRating = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5">
         {reviews.slice(0, 4).map((review) => (
-          <div key={review._id} className="flex flex-col bg-white p-4">
+          <div data-aos="zoom-in"
+          key={review._id} className="flex flex-col bg-white p-4">
             <div className="flex flex-col justify-center items-center gap-2">
               <div className="avatar">
                 <div className="w-16 rounded-full ring ring-sky-400">

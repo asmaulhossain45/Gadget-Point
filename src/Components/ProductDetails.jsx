@@ -1,22 +1,54 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Routes/AuthProvider";
 import InputRating from "./InputRating";
 
 const ProductDetails = () => {
+  const { user } = useContext(AuthContext);
   const loadedProduct = useLoaderData();
-  const { name, brand, category, photoURL, price, description } = loadedProduct;
+  const {
+    name,
+    productId,
+    brand,
+    category,
+    photoURL,
+    display,
+    features,
+    released,
+    price,
+    rating,
+    warranty,
+    description,
+  } = loadedProduct;
+  const userUID = user.uid;
+  const cart = {
+    userUID,
+    name,
+    productId,
+    brand,
+    category,
+    photoURL,
+    display,
+    features,
+    released,
+    price,
+    rating,
+    warranty,
+    description,
+  };
 
   const handleCartButton = () => {
-    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/cart", {
+    fetch("https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loadedProduct),
+      body: JSON.stringify(cart),
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.insertedId){
+        if (data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -24,8 +56,7 @@ const ProductDetails = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-        }
-        else{
+        } else {
           Swal.fire({
             position: "center",
             icon: "warning",

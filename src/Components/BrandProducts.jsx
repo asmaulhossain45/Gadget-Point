@@ -1,3 +1,6 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import { GrUpdate } from "react-icons/gr";
 import { TbListDetails } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
@@ -5,6 +8,10 @@ import SwiperCarousel from "./Carousel/SwiperCarousel";
 
 const BrandProducts = () => {
   const loadedProducts = useLoaderData();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  });
 
   return (
     <div className="">
@@ -19,6 +26,7 @@ const BrandProducts = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center my-6 px-4 md:px-8">
           {loadedProducts.map((product) => (
             <div
+              data-aos="fade-up"
               key={product._id}
               className="flex flex-col text-slate-900 bg-white text-xl min-w-full mx-auto"
             >

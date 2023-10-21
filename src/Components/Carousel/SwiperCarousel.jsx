@@ -7,7 +7,6 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const SwiperCarousel = ({ loadedProducts }) => {
-
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
@@ -50,10 +49,8 @@ const SwiperCarousel = ({ loadedProducts }) => {
             </SwiperSlide>
           </div>
         ))}
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
+        <div className="hidden">
+          <span ref={progressCircle}></span>
           <span ref={progressContent}></span>
         </div>
       </Swiper>

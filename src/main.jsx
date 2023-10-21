@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/brand/${params.brand}`),
+          fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/brand/${params.brand}`),
       },
       {
         path: "/products",
@@ -44,17 +44,17 @@ const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: () => fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products"),
+        loader: () => fetch("https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products"),
       },
       {
-        path: "/update/:id",
+        path: "/update/:userUID",
         element: (
           <PrivateRoute>
             <ProductUpdate></ProductUpdate>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products/${params.id}`),
+          fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products/${params.userUID}`),
       },
       {
         path: "/products/:id",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products/${params.id}`),
+          fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products/${params.id}`),
       },
       {
         path: "/addProduct",
@@ -75,13 +75,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myCart",
+        path: "/myCart/:email",
         element: (
           <PrivateRoute>
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/cart"),
+        loader: ({ params }) =>
+          fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/cart/${params.email}`),
       },
       {
         path: "/contact",
@@ -102,7 +103,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <HelmetProvider>
-        <RouterProvider router={router} />
+        <RouterProvider scrollRestoration="manual" router={router} />
       </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>

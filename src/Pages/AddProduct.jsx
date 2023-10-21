@@ -36,7 +36,7 @@ const AddProduct = () => {
     console.log(addProductData);
     // Post data to server
     fetch(
-      "https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products",
+      "https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products",
       {
         method: "POST",
         headers: {

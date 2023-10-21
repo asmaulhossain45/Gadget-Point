@@ -4,7 +4,6 @@ import { AuthContext } from "../Routes/AuthProvider";
 
 const InputRating = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.displayName);
   const handleReview = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +12,7 @@ const InputRating = () => {
     const message = form.message.value;
     const review = { name, photoURL, message };
     console.log(review);
-    fetch("https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/reviews", {
+    fetch("https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

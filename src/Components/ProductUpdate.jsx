@@ -52,7 +52,7 @@ const ProductUpdate = () => {
     console.log(updateProductData);
 
     // Update Product Using PATCH
-    fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/products/${_id}`, {
+    fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/products/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

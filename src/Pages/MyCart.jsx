@@ -1,4 +1,6 @@
-import { useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -9,7 +11,7 @@ const MyCart = () => {
   // Delete Cart Data
   const handleDeleteButton = (id) => {
     console.log("delete");
-    fetch(`https://gadget-point-server-fafvkgxmw-asmaul-hossains-projects.vercel.app/api/cart/${id}`, {
+    fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/cart/remove/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -28,9 +30,15 @@ const MyCart = () => {
       });
   };
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  });
+
   return (
     <div className="min-h-[85vh] px-4 md:px-8 my-6 md:my-10 lg:my-14">
-      <Helmet><title>My Cart</title></Helmet>
+      <Helmet>
+        <title>My Cart</title>
+      </Helmet>
       <h1 className="text-xl md:text-3xl text-white text-center font-bold">
         Your Cart Product
       </h1>
@@ -41,13 +49,14 @@ const MyCart = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
           {products.map((product) => (
             <div
+              data-aos="zoom-in-down"
               key={product._id}
               className="grid grid-cols-2 bg-white items-center rounded-md"
             >
               <figure className="h-full">
                 <img className="p-5" src={product.photoURL} alt="" />
               </figure>
-              <div className="grow space-y-1">
+              <div className="grow space-y-1 pr-3">
                 <h2 className="font-semibold text-xl lg:text-3xl">
                   {product.name}
                 </h2>
