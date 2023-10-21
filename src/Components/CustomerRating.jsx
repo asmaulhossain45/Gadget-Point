@@ -15,11 +15,11 @@ const CustomerRating = () => {
   });
 
   return (
-    <div className="my-6 md:my-10 lg:my-14 px-4 md:px-8">
-      <h1 className="text-xl md:text-3xl text-orange-500 text-center font-bold">
+    <>
+      <h1 className="text-lg md:text-2xl lg:text-3xl text-orange-500 text-center font-bold">
         Customer Review
       </h1>
-      <p className="text-xs md:text-base text-center text-white">
+      <p className="text-xs md:text-sm lg:text-base text-center text-slate-200">
         What Our Customer Say About Our Services!
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5">
@@ -46,7 +46,7 @@ const CustomerRating = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

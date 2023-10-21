@@ -14,10 +14,14 @@ function App() {
     );
   }
   return (
-    <section className="max-w-screen-xl mx-auto bg-slate-900">
-      <Navbar></Navbar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+    <section className="bg-slate-900">
+      <section className="lg:w-[1024px] mx-auto">
+        <section className="sticky z-10 top-0 border-b border-sky-400">
+          <Navbar></Navbar>
+        </section>
+        <Outlet></Outlet>
+        <Footer></Footer>
+      </section>
     </section>
   );
 }

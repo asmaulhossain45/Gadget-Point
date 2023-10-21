@@ -2,8 +2,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { GrUpdate } from "react-icons/gr";
-import { TbListDetails } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Products = () => {
@@ -14,7 +12,7 @@ const Products = () => {
   });
 
   return (
-    <div className="my-10">
+    <div className="mx-4 md:mx-10 lg:mx-20 my-4 md:my-8 lg:my-12">
       <Helmet>
         <title>Products</title>
       </Helmet>
@@ -24,52 +22,42 @@ const Products = () => {
       <p className="text-xs md:text-base text-center text-white">
         Get Your Desired Product from Featured Product!
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center my-6 px-4 md:px-8">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 mx-auto my-6">
         {products.map((product) => (
           <div
-            data-aos="zoom-in-up"
+            data-aos="zoom-in-down"
             key={product._id}
-            className="flex flex-col text-slate-900 bg-white text-xl min-w-full mx-auto"
+            className="bg-white flex flex-col justify-center items-center"
           >
-            <div className="flex-grow border-b-2 relative">
-              <span className="absolute badge bg-orange-500 font-semibold h-7 w-7 -right-2 -top-2 border-0 text-white">
-                {product.rating}
+            <div className="border-b-2 relative flex-grow">
+              <span className="text-xs font-semibold absolute bg-orange-500  right-0 top-1 px-2 py-[1px] rounded-ss-full rounded-es-full text-white">
+                Rating: {product.rating}
               </span>
-              <div className="flex justify-center h-full">
-                <img className="p-5" src={product.photoURL} alt="Product" />
+              <div className="flex items-center h-full">
+                <img className="p-6 grow" src={product.photoURL} alt="Product" />
               </div>
             </div>
-            <div className="px-4 py-2 flex">
-              <div className="grow">
-                <h1
-                  className="font-bold
-              "
-                >
-                  {product.name}
-                </h1>
-                <p className="text-sm font-medium text-slate-500">
-                  Category: {product.category}
-                </p>
-                <p className="text-base font-medium">Brand: {product.brand}</p>
-                <p className="text-base font-medium">
-                  Price:{" "}
-                  <span className="text-orange-500 font-semibold text-base">
-                    ${product.price}
-                  </span>
+            {/* Card Body */}
+            <div className=" flex flex-col px-4 py-2 space-y-1">
+              <div className="text-center space-y-[2px]">
+                <h1 className="grow text-sm font-semibold">{product.name}</h1>
+                <p className="text-xs text-slate-500">{product.brand}</p>
+                <p className="text-sm text-orange-500 font-semibold">
+                  ${product.price}
                 </p>
               </div>
-              <div className="flex flex-col justify-around items-center">
+              <div className="flex gap-2 justify-around items-center">
                 <Link
-                  className="text-2xl hover:scale-125 duration-300"
+                  className="text-xs font-medium border border-sky-400 px-2 py-1 text-sky-400 rounded-sm hover:scale-110 duration-300"
                   to={`/Update/${product._id}`}
                 >
-                  <GrUpdate></GrUpdate>
+                  Update
                 </Link>
                 <Link
-                  className="text-2xl hover:scale-125 duration-300"
+                  className="text-xs font-medium bg-sky-400 px-2 py-1 text-white rounded-sm hover:scale-110 duration-300"
                   to={`/products/${product._id}`}
                 >
-                  <TbListDetails></TbListDetails>
+                  Details
                 </Link>
               </div>
             </div>

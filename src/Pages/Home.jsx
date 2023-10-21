@@ -7,24 +7,24 @@ import HotProducts from "../Components/HotProducts";
 const Home = () => {
   return (
     <>
-    <Helmet><title>Home</title></Helmet>
-      <header>
-        <HeaderCarousel></HeaderCarousel>
-      </header>
-      <section className="my-6 md:my-10 lg:my-14 px-4 md:px-8">
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      <HeaderCarousel></HeaderCarousel>
+      <section className="mx-4 md:mx-10 lg:mx-20 my-4 md:my-8 lg:my-12">
         <AllBrand></AllBrand>
       </section>
-      <section>
+      <section className="mx-4 md:mx-10 lg:mx-20 my-4 md:my-8 lg:my-12">
         <HotProducts></HotProducts>
       </section>
-      <section className="my-6 md:my-10 lg:my-14">
+      <section>
         <img
           className="w-full"
           src="https://i.ibb.co/QX4M4Nx/Banner.png"
           alt=""
         />
       </section>
-      <section>
+      <section className="mx-4 md:mx-10 lg:mx-20 my-4 md:my-8 lg:my-12">
         <CustomerRating></CustomerRating>
       </section>
     </>

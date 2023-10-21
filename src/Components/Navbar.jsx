@@ -44,7 +44,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-slate-900 text-sky-400 pr-4 md:px-8 shadow-sm shadow-sky-400 font-semibold">
+    <div className="px-4 navbar bg-opacity-95 bg-slate-900 text-sky-400 font-semibold">
       <div className="navbar-start">
         <div className="dropdown z-50">
           <label

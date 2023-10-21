@@ -69,8 +69,8 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="my-6 md:my-10 lg:my-14 mx-4 md:mx-8">
-      <div className="bg-white">
+    <>
+      <div className="bg-white md:px-6 lg:px-10">
         <div className="grid grid-cols-2 gap-2 justify-items-center p-3">
           <div className="place-self-center">
             <img src={photoURL} alt={name} />
@@ -100,11 +100,11 @@ const ProductDetails = () => {
         </div>
         <div className="p-5">
           <h1 className="text-lg font-semibold">Description:</h1>
-          <p className="text-justify text-slate-600">{description}</p>
+          <p className="text-justify text-xs text-slate-600">{description}</p>
         </div>
       </div>
       <InputRating></InputRating>
-    </div>
+    </>
   );
 };
 

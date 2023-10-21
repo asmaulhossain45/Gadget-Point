@@ -11,9 +11,12 @@ const MyCart = () => {
   // Delete Cart Data
   const handleDeleteButton = (id) => {
     console.log("delete");
-    fetch(`https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/cart/remove/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://gadget-point-server-vxg3lda8h-asmaul-hossains-projects.vercel.app/api/cart/remove/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -39,10 +42,10 @@ const MyCart = () => {
       <Helmet>
         <title>My Cart</title>
       </Helmet>
-      <h1 className="text-xl md:text-3xl text-white text-center font-bold">
+      <h1 className="text-lg md:text-2xl lg:text-3xl text-orange-500 text-center font-bold">
         Your Cart Product
       </h1>
-      <p className="text-xs md:text-base text-center text-white">
+      <p className="text-xs md:text-sm lg:text-base text-center text-slate-200">
         Get Your Desired Product from Featured Product!
       </p>
       <div>
