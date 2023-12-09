@@ -1,10 +1,13 @@
-### GADGET POINT
+# GADGET POINT
+
+##Technology
+- React, tailwind css, firebase
 
 ## Live Site Link:
 
 - [Gadget Point](https://gadget-point-asmaul.web.app/)
 
-# Project Features:
+## Project Features:
 
 - find products by Brand
 - see the details of every product
